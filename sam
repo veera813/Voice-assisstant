@@ -1,0 +1,107 @@
+import os 
+import subprocess
+import pyttsx3
+import getpass
+import webbrowser
+import speech_recognition as sr 
+pyttsx3.speak("hello hi ")
+pyttsx3.speak("this is SAM")
+print("\t\t\t WELCOME TO MY WORLD  OF PROGRAMMING  ")
+pyttsx3.speak("WELCOME TO MY WORLD OF PROGRAMMING ")
+pyttsx3.speak('we require credentials  to enter into the terminal ')
+pyttsx3.speak("if you are a new user then press 'Y' ")
+print("IF YOU ARE A NEW USER THEN PRESS  'Y'")
+nuser=input("IF YOU ARE A NEW USER THEN PRESS ")
+s='N'
+user=['veera','reddy']
+pas=['veera','reddy']
+if s not in nuser:
+    pyttsx3.speak("enter your user name:")
+    nu=input("enter your user name:")
+    pyttsx3.speak("enter your password")
+    nupassa=input("enter your password")
+    user.insert(0,nu)
+    pas.insert(0,nupassa)
+    print(user)
+    print(pas)
+ 
+pyttsx3.speak("enter your user name:")
+p=input("enter ur user name:")
+pyttsx3.speak("enter your password")
+passa=getpass.getpass("enter ur password:")
+if  p not in user and  passa not in pas :
+    print('access denaid')
+    pyttsx3.speak("access denaid")
+    exit()    
+pyttsx3.speak("ok!!!!")
+print("SAM : what can i do for {}".format(p))
+
+pyttsx3.speak("what can i do for u {}".format(p))
+r =  sr.Recognizer()
+with sr.Microphone() as source:
+          print("i am listining ")
+          pyttsx3.speak("i am listining")          			
+          audio = r.listen(source)
+          print("speech done")
+          a = r.recognize_google(audio)
+          print(a)
+if ("Chrome" in a) or ("browser" in a):
+          os.system("chrome")
+          print("opening the browser")
+          pyttsx3.speak("OPENING THE CHROME BROWSER")
+elif ("Notepad" in a) or ("open notepad" in a):
+          os.system("notepad")
+          pyttsx3.speak("opening the notepad")
+          print("OPENING THE NOTEPAD")
+elif ("WhatsApp" in a):
+          webbrowser.open("https://web.whatsapp.com/")
+          pyttsx3.speak("opening the whatsapp web ")
+elif (" run  cal" in a) or ("open cal" in a):
+          webbrowser.open("http://192.168.43.185/cgi-bin/in.py?x=cal")
+          pyttsx3.speak("OPENING THIS MONTH CALENDER")
+elif ("run the date" in a) or ("what the date today" in a) or ("today date"):
+          x=os.system("date")
+          pyttsx3.speak("OPENING TODAY'S  DATE   ")
+          print(x)
+          pyttsx3.speak("todays date is {}".format(x))
+elif ("run the docker" in a) or ("open the docker " in a )  and  ("docker" in a):
+          pyttsx3.speak("Note: to run the docker we are redirecting to docker page because of your cofortable like which os and os image you need , PRESS ENTER TO PROCED  ")
+          print("Note: to run the docker we are redirecting to docker page because of your cofortable like which os and os image you need , PRESS ENTER TO PROCED  ")
+          input ()
+          webbrowser.open("http://192.168.43.185/docker.html")
+          pyttsx3.speak("Opening the Docker Page ")
+elif ("stop the docker" in a):
+          print("TO STOP THE DOCKER WE REQUIRE  WHICH OS YOU WOULD LIKE  TO STOP ")
+          pyttsx3.speak("TO STOP THE DOCKER WE REQUIRE  WHICH OS YOU WOULD LIKE  TO STOP")
+          webbrowser.open("http://192.168.43.185/dockers.html")
+         
+elif ("name " in a ) or ("who are you" in a):
+          pyttsx3.speak("THIS IS SAM I AM YOUR PERSONAL ASSISSTENT")
+          print("THIS IS SAM I AM YOUR PERSONAL ASSISSTENT")
+
+elif ("open a w s c l i " in a ) or ("AWS" in a):
+          print("opening the AWS cloud")
+          pyttsx3.speak("OPENING THE AWS CLOUD")
+          os.system(aws)
+
+elif ("hi sam" in a):
+          pyttsx3.speak("hi {} what can i do for u ".format(p))
+          print("hi {} what can i do for u ".format(p))
+elif ("open aws" in a):
+          pyttsx3.speak("opening the a w s console")
+          webbrowser.open("https://aws.amazon.com/console/")
+          print("opening AWS console ")
+
+elif ("open Linux web app" in a) or ("run the linux web app" in a ):
+          webbrowser.open("http://192.168.43.185/in.html")
+          pyttsx3.speak("TO RUN ANY LINUX COMMAND IN WINDOWS WE ARE OPENING LINUX WEBUI FOR U ")
+elif ("add the user" in a ):
+          webbrowser.open("http://192.168.43.185/user.html")
+          print("we are opening the webui to add user in linux")
+          pyttsx3.speak("we are opening webui to add user in linux")   
+elif ("exit" in a) or  ("quit" in a) or ("close" in a):
+          pyttsx3.speak("closining the program")
+          exit()
+else:
+          pyttsx3.speak("DOES NOT EXIT")
+          print("does not exit")
